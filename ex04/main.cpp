@@ -6,19 +6,21 @@
 /*   By: mberthou <mberthou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 09:11:04 by mberthou          #+#    #+#             */
-/*   Updated: 2026/02/02 10:47:23 by mberthou         ###   ########.fr       */
+/*   Updated: 2026/03/21 17:17:27 by mberthou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <bits/stdc++.h>
 
+#include "colours.hpp"
+
 int	main(int argc, char **argv) {
 	if (argc != 4) {
-		std::cerr	<< "Not enough arguments: "
-					<< "the program takes three parameters in the "
+		std::cerr	<< RED << "Not enough arguments: "
+					<< "The program takes three parameters in the "
 					<< "following order: a filename and two strings, s1 and s2"
-					<< std::endl;
+					<< RESET << std::endl;
 		return (1);
 	}
 	std::string	s1 = argv[2];
@@ -28,7 +30,7 @@ int	main(int argc, char **argv) {
 	char *newFile = std::strcat(argv[1], ".replace");
 	std::ofstream fileReplace(newFile);
 	if (!file.is_open() || !fileReplace) {
-		std::cerr << "Error: Unable to open file!" << std::endl;
+		std::cerr << RED << "Error: Unable to open file!" << RESET << std::endl;
 		return (1);
     }
 
@@ -43,7 +45,7 @@ int	main(int argc, char **argv) {
 		fileReplace << std::endl;
 	}
     if (!file.eof())
-		std::cerr << "Error: File reading failed!" << std::endl;
+		std::cerr << RED << "Error: File reading failed!" << RESET << std::endl;
 
 	file.close();
 	fileReplace.close();
