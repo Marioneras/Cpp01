@@ -28,14 +28,3 @@ Zombie::Zombie(const std::string &name) :
 Zombie::~Zombie() {
 	std::cout << "Destroyed " << _name << std::endl;
 }
-
-Zombie *zombieHorde(int n, std::string name) {
-	Zombie *newZombie = new Zombie[n];
-	if (!newZombie)
-		return (NULL);
-
-	for (int i = 0; i < n; i++)
-		newZombie[i] = Zombie(name);
-
-	return (newZombie);
-}

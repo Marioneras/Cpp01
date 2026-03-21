@@ -5,18 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mberthou <mberthou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/01 18:28:35 by mberthou          #+#    #+#              #
-#    Updated: 2026/02/01 18:59:37 by mberthou         ###   ########.fr        #
+#    Created: 2026/03/14 23:33:10 by mberthou          #+#    #+#              #
+#    Updated: 2026/03/21 16:50:00 by mberthou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Moar_brainz!
-SOURCES = Zombie.cpp zombieHorde.cpp main.cpp
+SOURCES = main.cpp Zombie.cpp zombieHorde.cpp
+NAME = MoarBrainz!
+CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
+OBJECTS = $(SOURCES:.cpp=.o)
 
-$(NAME): $(SOURCES)
-	$(CC) $(CFLAGS) -o $(NAME) $(SOURCES)
+all: $(NAME)
 
-clean:
-	rm -rf $(NAME)
+$(NAME) : $(OBJECTS)
+	c++ -o $(NAME) $(OBJECTS)
+
+%.o: %.cpp
+	c++ -o $@ -c $< $(CPP_FLAGS)
+
+clean :
+	rm $(OBJECTS)
+
+fclean : clean
+	rm $(NAME)
+
+re : fclean all
+
+.PHONY: all clean fclean re
