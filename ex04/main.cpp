@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <bits/stdc++.h>
+#include <fstream>
+#include <string>
 
 #include "colours.hpp"
 
@@ -26,20 +27,30 @@ int	main(int argc, char **argv) {
 	std::string	s1 = argv[2];
 	std::string	s2 = argv[3];
 
+	if (s1.empty()) {
+		std::cerr	<< RED << "Please, do not use an empty string for s1"
+					<< std::endl;
+		return (1);
+	}
+
 	std::ifstream file(argv[1]);
-	char *newFile = std::strcat(argv[1], ".replace");
-	std::ofstream fileReplace(newFile);
+	std::string newFile = std::string(argv[1]) + ".replace";
+	std::ofstream fileReplace(newFile.c_str());
 	if (!file.is_open() || !fileReplace) {
-		std::cerr << RED << "Error: Unable to open file!" << RESET << std::endl;
+		std::cerr	<< RED << "Error: Unable to open "
+					<< (!file.is_open() ? std::string(argv[1]) : newFile)
+					<< " file!"
+					<< RESET << std::endl;
 		return (1);
     }
 
 	std::string line;
     while (std::getline(file, line)) {
 		size_t index = 0;
-		while ((index = line.find(s1, index + 1)) != std::string::npos) {
+		while ((index = line.find(s1, index)) != std::string::npos) {
 			line.erase(index, s1.size());
 			line.insert(index, s2);
+			index += s2.length();
 		}
 		fileReplace << line;
 		fileReplace << std::endl;
