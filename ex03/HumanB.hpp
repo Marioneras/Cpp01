@@ -12,6 +12,8 @@
 
 #include <string>
 
+#include "Weapon.hpp"
+
 class HumanB {
 	private:
 		std::string	_name;
