@@ -14,13 +14,16 @@
 
 #include "Harl.hpp"
 
-int	main() {
-	Harl harl;
+std::string toLower(std::string str) {
+    for (size_t i = 0; i < str.length(); i++)
+        str[i] = std::tolower(str[i]);
+    return str;
+}
 
-	harl.complain("debug");
-	harl.complain("info");
-	harl.complain("warning");
-	harl.complain("error");
+int main(int argc, char **argv) {
+    if (argc != 2)
+        return (1);
 
-	return (0);
+    Harl harl;
+    harl.complain(toLower(argv[1]));
 }
