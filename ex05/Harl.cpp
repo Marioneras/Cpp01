@@ -59,5 +59,5 @@ void	Harl::complain(std::string level) {
             return;
 		}
 	}
-	Harl::invalid();
+	this->invalid();
 }
