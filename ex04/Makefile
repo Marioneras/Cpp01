@@ -21,7 +21,7 @@ $(NAME) : $(OBJECTS)
 	c++ -o $(NAME) $(OBJECTS)
 
 %.o: %.cpp
-	c++ -o $@ -c $< $(CPP_FLAGS)
+	c++ -o $@ -c $< $(CXX_FLAGS)
 
 clean :
 	rm $(OBJECTS)

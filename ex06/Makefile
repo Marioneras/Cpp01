@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SOURCES = main.cpp Harl.cpp
-NAME = Harl2.0
+NAME = harlFilter
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 OBJECTS = $(SOURCES:.cpp=.o)
 
@@ -21,7 +21,7 @@ $(NAME) : $(OBJECTS)
 	c++ -o $(NAME) $(OBJECTS)
 
 %.o: %.cpp
-	c++ -o $@ -c $< $(CPP_FLAGS)
+	c++ -o $@ -c $< $(CXX_FLAGS)
 
 clean :
 	rm $(OBJECTS)
