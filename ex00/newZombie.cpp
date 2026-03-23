@@ -15,9 +15,12 @@
 #include "Zombie.hpp"
 
 Zombie *newZombie(std::string name) {
-	Zombie *newZombie = new Zombie(name);
-	if (!newZombie)
-		std::cout << "Memory allocation failed" << std::endl;
+	try {
+		Zombie *newZombie = new Zombie(name);
+	}
+	catch (std::bad_alloc &e) {
+		std::cerr << "Allocation failed" << std::endl;
+	}
 	return (newZombie);
 }
 

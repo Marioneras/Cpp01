@@ -13,9 +13,12 @@
 #include "Zombie.hpp"
 
 Zombie *zombieHorde(int n, std::string name) {
-	Zombie *newZombie = new Zombie[n];
-	if (!newZombie)
-		return (NULL);
+	try {
+		Zombie *newZombie = new Zombie[n];
+	}
+	catch (std::bad_alloc &e) {
+		std::cerr << "Allocation failed" << std::endl;
+	}
 
 	for (int i = 0; i < n; i++)
 		newZombie[i] = Zombie(name);
