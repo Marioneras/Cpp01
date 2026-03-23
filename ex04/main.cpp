@@ -53,7 +53,8 @@ int	main(int argc, char **argv) {
 			index += s2.length();
 		}
 		fileReplace << line;
-		fileReplace << std::endl;
+		if (!file.eof())
+			fileReplace << std::endl;
 	}
     if (!file.eof())
 		std::cerr << RED << "Error: File reading failed!" << RESET << std::endl;
