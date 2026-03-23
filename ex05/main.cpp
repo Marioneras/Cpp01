@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cctype>
 
 #include "Harl.hpp"
 
 std::string toLower(std::string str) {
     for (size_t i = 0; i < str.length(); i++)
-        str[i] = std::tolower(str[i]);
+        str[i] = static_cast<char>(std::tolower(static_cast<unsigned char>(str[i])));
     return str;
 }
 
