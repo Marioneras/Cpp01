@@ -21,6 +21,7 @@ class Harl {
 		void info(void);
 		void warning(void);
 		void error(void);
+		void invalid(void);
 	public:
 		struct	s_level {
 			std::string	level;

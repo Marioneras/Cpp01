@@ -40,12 +40,16 @@ void	Harl::error() {
 				<< std::endl;
 }
 
+void	Harl::invalid() {
+	std::cerr	<< "Invalid level" << std::endl;
+}
+
 void	Harl::complain(std::string level) {
 	static const struct s_level	dico[] = {
 		{"debug", &Harl::debug},
 		{"info", &Harl::info},
 		{"warning", &Harl::warning},
-		{"error", &Harl::error}
+		{"error", &Harl::error},
 	};
 	const int size = sizeof(dico) / sizeof(dico[0]);
 
@@ -55,4 +59,5 @@ void	Harl::complain(std::string level) {
             return;
 		}
 	}
+	Harl::invalid();
 }
