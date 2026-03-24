@@ -61,4 +61,6 @@ int	main(int argc, char **argv) {
 
 	file.close();
 	fileReplace.close();
+
+	return (0);
 }
