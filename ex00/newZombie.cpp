@@ -15,12 +15,5 @@
 #include "Zombie.hpp"
 
 Zombie *newZombie(std::string name) {
-	try {
-		Zombie *newZombie = new Zombie(name);
-	}
-	catch (std::bad_alloc &e) {
-		std::cerr << "Allocation failed" << std::endl;
-	}
-	return (newZombie);
+	return new Zombie(name);
 }
-
